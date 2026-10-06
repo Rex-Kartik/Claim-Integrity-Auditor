@@ -1,43 +1,74 @@
 """
-Stage 1: PDF text extraction using pdfminer.six (MIT licence).
-Extracts text per page with page numbers.
+Stage 1: PDF text extraction using GROBID (processFulltextDocument).
+Extracts text and structured sections from the PDF.
 """
-import io
-import json
+import httpx
 import logging
-from langfuse import observe, propagate_attributes
-from pathlib import Path
-from typing import Optional
-
-from pdfminer.high_level import extract_pages
-from pdfminer.layout import LTTextContainer, LTChar
+import xml.etree.ElementTree as ET
+from langfuse import observe
 
 logger = logging.getLogger(__name__)
 
+GROBID_URL = "http://localhost:8070/api/processFulltextDocument"
 
-def extract_text_by_page(pdf_bytes: bytes) -> list[dict]:
+def extract_text_with_grobid(pdf_bytes: bytes) -> list[dict]:
     """
-    Extract text from PDF, returning list of {page: int, text: str}.
-    page is 1-indexed.
+    Extract text from PDF using GROBID, returning list of {page: int, text: str}
+    (We simulate 'page' as sections for compatibility, or just 1 page containing everything).
     """
-    pages = []
     try:
-        for page_num, page_layout in enumerate(extract_pages(io.BytesIO(pdf_bytes)), start=1):
-            texts = []
-            for element in page_layout:
-                if isinstance(element, LTTextContainer):
-                    texts.append(element.get_text())
-            page_text = "".join(texts)
-            pages.append({"page": page_num, "text": page_text})
+        response = httpx.post(
+            GROBID_URL,
+            files={"input": ("paper.pdf", pdf_bytes, "application/pdf")},
+            timeout=120.0
+        )
+        response.raise_for_status()
+        tei_xml = response.text
+        parsed_text = parse_tei_xml(tei_xml)
+        
+        # Return as a single "page" to keep interface simple
+        return [{"page": 1, "text": parsed_text}]
     except Exception as e:
-        logger.error("PDF extraction error: %s", e)
+        logger.error("GROBID extraction error: %s", e)
         raise
-    return pages
 
-
-def full_text(pages: list[dict]) -> str:
-    """Concatenate all pages into one string."""
-    return "\n".join(p["text"] for p in pages)
+def parse_tei_xml(xml_string: str) -> str:
+    """Parse GROBID TEI XML to extract readable text with structural hints."""
+    ns = {'tei': 'http://www.tei-c.org/ns/1.0'}
+    
+    root = ET.fromstring(xml_string)
+    parts = []
+    
+    # Extract title
+    title = root.find('.//tei:titleStmt/tei:title', ns)
+    if title is not None and title.text:
+        parts.append(f"TITLE: {title.text.strip()}\n")
+    
+    # Extract abstract
+    abstract = root.find('.//tei:profileDesc/tei:abstract', ns)
+    if abstract is not None:
+        parts.append("ABSTRACT:")
+        for p in abstract.findall('.//tei:p', ns):
+            p_text = "".join(p.itertext()).strip()
+            if p_text:
+                parts.append(p_text)
+        parts.append("\n")
+        
+    # Extract body paragraphs
+    body = root.find('.//tei:body', ns)
+    if body is not None:
+        for div in body.findall('.//tei:div', ns):
+            head = div.find('tei:head', ns)
+            if head is not None and head.text:
+                parts.append(f"SECTION: {head.text.strip()}")
+                
+            for p in div.findall('.//tei:p', ns):
+                p_text = "".join(p.itertext()).strip()
+                if p_text:
+                    parts.append(p_text)
+            parts.append("\n")
+            
+    return "\n".join(parts)
 
 
 @observe(name="extract_run")
@@ -45,7 +76,7 @@ def run(audit_id: str, pdf_bytes: bytes) -> dict:
     """Extract text and write stage result."""
     from shared import write_stage_result
 
-    pages = extract_text_by_page(pdf_bytes)
+    pages = extract_text_with_grobid(pdf_bytes)
     payload = {
         "stage": "extract",
         "inputs": {"pdf_size_bytes": len(pdf_bytes)},

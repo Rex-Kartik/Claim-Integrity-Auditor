@@ -1,0 +1,117 @@
+[
+  {
+    "id": "retracted_1",
+    "doi": "10.1000/retracted.1",
+    "expected_verdict": "retraction record found",
+    "category": "retracted"
+  },
+  {
+    "id": "retracted_2",
+    "doi": "10.1000/retracted.2",
+    "expected_verdict": "retraction record found",
+    "category": "retracted"
+  },
+  {
+    "id": "retracted_3",
+    "doi": "10.1000/retracted.3",
+    "expected_verdict": "retraction record found",
+    "category": "retracted"
+  },
+  {
+    "id": "retracted_4",
+    "doi": "10.1000/retracted.4",
+    "expected_verdict": "retraction record found",
+    "category": "retracted"
+  },
+  {
+    "id": "retracted_5",
+    "doi": "10.1000/retracted.5",
+    "expected_verdict": "retraction record found",
+    "category": "retracted"
+  },
+  {
+    "id": "retracted_6",
+    "doi": "10.1000/retracted.6",
+    "expected_verdict": "retraction record found",
+    "category": "retracted"
+  },
+  {
+    "id": "stats_1",
+    "apa_statistics": ["t(42)=3.14, p=.05"],
+    "expected_stats_reproduced": false,
+    "category": "stats_inconsistency"
+  },
+  {
+    "id": "stats_2",
+    "apa_statistics": ["F(2,87)=5.23, p<.001"],
+    "expected_stats_reproduced": false,
+    "category": "stats_inconsistency"
+  },
+  {
+    "id": "stats_3",
+    "apa_statistics": ["chi-square(1)=1.2, p<.01"],
+    "expected_stats_reproduced": false,
+    "category": "stats_inconsistency"
+  },
+  {
+    "id": "stats_4",
+    "apa_statistics": ["r(50)=0.8, p=.10"],
+    "expected_stats_reproduced": false,
+    "category": "stats_inconsistency"
+  },
+  {
+    "id": "stats_5",
+    "apa_statistics": ["t(20)=1.5, p<.05"],
+    "expected_stats_reproduced": false,
+    "category": "stats_inconsistency"
+  },
+  {
+    "id": "stats_6",
+    "apa_statistics": ["F(1,30)=4.1, p=.001"],
+    "expected_stats_reproduced": false,
+    "category": "stats_inconsistency"
+  },
+  {
+    "id": "cite_error_1",
+    "claims": [{"claim": "X causes Y", "cited_dois": ["10.1000/cite.1"]}],
+    "expected_citation_verdict": "not supported",
+    "category": "citation_error"
+  },
+  {
+    "id": "cite_error_2",
+    "claims": [{"claim": "A is B", "cited_dois": ["10.1000/cite.2"]}],
+    "expected_citation_verdict": "not supported",
+    "category": "citation_error"
+  },
+  {
+    "id": "cite_error_3",
+    "claims": [{"claim": "No effect observed", "cited_dois": ["10.1000/cite.3"]}],
+    "expected_citation_verdict": "not supported",
+    "category": "citation_error"
+  },
+  {
+    "id": "clean_1",
+    "expected_overall": "clean",
+    "category": "clean_control"
+  },
+  {
+    "id": "clean_2",
+    "expected_overall": "clean",
+    "category": "clean_control"
+  },
+  {
+    "id": "clean_3",
+    "expected_overall": "clean",
+    "category": "clean_control"
+  },
+  {
+    "id": "clean_4",
+    "expected_overall": "clean",
+    "category": "clean_control"
+  },
+  {
+    "id": "clean_5",
+    "expected_overall": "clean",
+    "category": "clean_control"
+  }
+]

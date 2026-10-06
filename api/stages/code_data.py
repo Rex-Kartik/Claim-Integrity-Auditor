@@ -5,6 +5,7 @@ Returns "loads", "fails" (with status code), or "absent".
 Never clones or executes anything.
 """
 import logging
+import re
 from langfuse import observe, propagate_attributes
 from typing import Optional
 
@@ -14,6 +15,23 @@ logger = logging.getLogger(__name__)
 
 TIMEOUT = 10.0
 USER_AGENT = "ResearchAuditBot/1.0 (demo; +https://github.com/example/research-audit)"
+GITHUB_API_BASE = "https://api.github.com/repos"
+
+def check_github_repo(owner: str, repo: str, url: str) -> dict:
+    """Check if a GitHub repo exists using the GitHub REST API."""
+    from shared import cache_get, cache_set
+    
+    api_url = f"{GITHUB_API_BASE}/{owner}/{repo}"
+    headers = {"User-Agent": USER_AGENT, "Accept": "application/vnd.github.v3+json"}
+    
+    try:
+        resp = httpx.get(api_url, headers=headers, timeout=TIMEOUT)
+        if resp.status_code == 200:
+            return {"url": url, "verdict": "loads", "status_code": 200, "method": "GITHUB_API"}
+        else:
+            return {"url": url, "verdict": "fails", "status_code": resp.status_code, "method": "GITHUB_API"}
+    except Exception as e:
+        return {"url": url, "verdict": "fails", "error": str(e), "method": "GITHUB_API"}
 
 
 def check_url(url: str) -> dict:
@@ -27,6 +45,16 @@ def check_url(url: str) -> dict:
     cached = cache_get("url_check", url)
     if cached:
         return cached
+
+    # Check if it's a GitHub URL
+    github_match = re.match(r'https?://(?:www\.)?github\.com/([^/]+)/([^/]+)/?', url)
+    if github_match:
+        owner, repo = github_match.groups()
+        # strip query params or fragments if any
+        repo = repo.split('?')[0].split('#')[0]
+        result = check_github_repo(owner, repo, url)
+        cache_set("url_check", url, result)
+        return result
 
     headers = {"User-Agent": USER_AGENT}
 
