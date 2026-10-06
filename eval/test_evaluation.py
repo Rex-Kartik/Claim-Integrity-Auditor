@@ -1,28 +1,34 @@
 import pytest
-from sklearn.metrics import cohen_kappa_score, precision_recall_fscore_support
-
-def test_metrics_calculation():
-    # Mock data for flagged claims
-    # 1: flagged, 0: not flagged
-    y_true = [1, 1, 1, 0, 0, 1, 0, 1, 0, 0]
-    y_pred = [1, 1, 0, 0, 0, 1, 1, 1, 0, 0]
-    
-    # Calculate precision, recall
-    precision, recall, f1, _ = precision_recall_fscore_support(y_true, y_pred, average='binary')
-    
-    # Target 0.6 kappa
-    kappa = cohen_kappa_score(y_true, y_pred, weights='quadratic')
-    
-    assert precision > 0.0
-    assert recall > 0.0
-    assert kappa is not None
-    print(f"Precision: {precision:.2f}, Recall: {recall:.2f}, Kappa: {kappa:.2f}")
 
 def compute_metrics(y_true, y_pred):
-    precision, recall, f1, _ = precision_recall_fscore_support(y_true, y_pred, average='binary', zero_division=0)
-    kappa = cohen_kappa_score(y_true, y_pred, weights='quadratic')
+    tp = sum(1 for t, p in zip(y_true, y_pred) if t == 1 and p == 1)
+    fp = sum(1 for t, p in zip(y_true, y_pred) if t == 0 and p == 1)
+    fn = sum(1 for t, p in zip(y_true, y_pred) if t == 1 and p == 0)
+    tn = sum(1 for t, p in zip(y_true, y_pred) if t == 0 and p == 0)
+
+    precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
+    recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
+
+    total = len(y_true)
+    po = (tp + tn) / total if total > 0 else 0
+    pe = ((tp + fn) * (tp + fp) + (fp + tn) * (fn + tn)) / (total * total) if total > 0 else 0
+    kappa = (po - pe) / (1 - pe) if (1 - pe) > 0 else 0.0
+
     return {
         "precision": precision,
         "recall": recall,
         "kappa": kappa
     }
+
+def test_metrics_calculation():
+    # Mock data for flagged claims
+    y_true = [1, 1, 1, 0, 0, 1, 0, 1, 0, 0]
+    y_pred = [1, 1, 0, 0, 0, 1, 1, 1, 0, 0]
+    
+    metrics = compute_metrics(y_true, y_pred)
+    
+    assert metrics["precision"] > 0.0
+    assert metrics["recall"] > 0.0
+    assert metrics["kappa"] is not None
+    print(f"Precision: {metrics['precision']:.2f}, Recall: {metrics['recall']:.2f}, Kappa: {metrics['kappa']:.2f}")
+

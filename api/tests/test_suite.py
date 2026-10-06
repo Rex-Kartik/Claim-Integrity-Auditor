@@ -160,7 +160,7 @@ class TestKeyRotation:
 
         call_count = [0]
 
-        def mock_post(url, json=None, timeout=None):
+        def mock_post(*args, **kwargs):
             call_count[0] += 1
             resp = MagicMock()
             if "key-one" in url:
@@ -235,15 +235,15 @@ class TestModelProbing:
         llm_mod._cooldown_until = [0.0]
         llm_mod._active_model = None
 
-        def mock_get(url, timeout=None):
+        def mock_get(url, headers=None, timeout=None):
             resp = MagicMock()
             resp.status_code = 200
             resp.json.return_value = {
-                "models": [{"name": "models/gemini-pro", "supportedGenerationMethods": ["generateContent"]}]
+                "models": [{"name": "models/gemini-1.5-flash", "supportedGenerationMethods": ["generateContent"]}]
             }
             return resp
 
-        def mock_post(url, json=None, timeout=None):
+        def mock_post(*args, **kwargs):
             resp = MagicMock()
             resp.status_code = 200
             resp.json.return_value = {
@@ -255,7 +255,7 @@ class TestModelProbing:
             with patch("httpx.post", side_effect=mock_post):
                 model = llm_mod.probe_and_select_model()
 
-        assert model == "models/gemini-pro"
+        assert model == "models/gemini-1.5-flash"
         llm_mod._keys = []
         llm_mod._cooldown_until = []
         llm_mod._active_model = None
@@ -267,7 +267,7 @@ class TestModelProbing:
         llm_mod._cooldown_until = [0.0]
         llm_mod._active_model = None
 
-        def mock_get(url, timeout=None):
+        def mock_get(*args, **kwargs):
             resp = MagicMock()
             resp.status_code = 200
             resp.json.return_value = {
@@ -275,7 +275,7 @@ class TestModelProbing:
             }
             return resp
 
-        def mock_post(url, json=None, timeout=None):
+        def mock_post(*args, **kwargs):
             resp = MagicMock()
             resp.status_code = 200
             resp.json.return_value = {
