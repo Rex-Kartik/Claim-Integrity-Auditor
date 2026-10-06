@@ -1,0 +1,14 @@
+{
+  "paper_id": "sample-d",
+  "grade": "D",
+  "rule_fired": "retraction record found",
+  "reason": "The lookups for the paper DOI returned a retraction record. The raw record is in the first N row of the checks table.",
+  "total_claims": 5,
+  "uncheckable_claims": [
+    {
+      "claim_id": "c5",
+      "reason": "The cited work has no retrievable abstract, so support could not be checked."
+    }
+  ],
+  "expected_grade": "D"
+}

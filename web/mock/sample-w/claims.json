@@ -1,0 +1,52 @@
+{
+  "paper_id": "sample-w",
+  "paper_doi": "10.99999/sample-w.2026.004",
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Longer commutes were linked to shorter sleep.",
+      "quote": "Longer commutes were linked to shorter sleep (t = 2.1, p < .05).",
+      "page": 4
+    },
+    {
+      "id": "c2",
+      "claim": "Commute mode moderated the link.",
+      "quote": "A moderation effect is plotted in Figure 3.",
+      "page": 5
+    },
+    {
+      "id": "c3",
+      "claim": "Sleep reports in this population are reliable.",
+      "quote": "Sleep reports in this population are reliable [41].",
+      "page": 3
+    },
+    {
+      "id": "c4",
+      "claim": "The commute measure was used in earlier surveys.",
+      "quote": "The commute measure was used in earlier surveys [42].",
+      "page": 3
+    },
+    {
+      "id": "c5",
+      "claim": "Sleep hours differed by season.",
+      "quote": "Hours of sleep differed by season, t(30) = 2.30, p = .029.",
+      "page": 6
+    },
+    {
+      "id": "c6",
+      "claim": "The survey instrument is described elsewhere.",
+      "quote": "The survey instrument has been described elsewhere [43].",
+      "page": 3
+    }
+  ],
+  "cited_dois": [
+    "10.99999/ref-w.041",
+    "10.99999/ref-w.042",
+    "10.99999/ref-w.043"
+  ],
+  "code_data_urls": [],
+  "statistic_strings": [
+    "t = 2.1, p < .05",
+    "t(30) = 2.30, p = .029"
+  ]
+}

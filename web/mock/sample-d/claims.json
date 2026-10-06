@@ -1,0 +1,48 @@
+{
+  "paper_id": "sample-d",
+  "paper_doi": "10.99999/sample-d.2026.001",
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Duration estimates were more variable under dual-task load.",
+      "quote": "Variability of estimates increased under dual-task load, t(28) = 3.12, p = .004.",
+      "page": 5
+    },
+    {
+      "id": "c2",
+      "claim": "The load effect differed between blocks.",
+      "quote": "The load by block interaction was reliable, F(1, 56) = 6.35, p = .015.",
+      "page": 6
+    },
+    {
+      "id": "c3",
+      "claim": "The pattern agrees with an earlier attention-gating account.",
+      "quote": "This pattern is consistent with attention-gating accounts of timing [12].",
+      "page": 7
+    },
+    {
+      "id": "c4",
+      "claim": "An earlier study reported a slowdown of similar size.",
+      "quote": "A slowdown of similar size was reported previously [14].",
+      "page": 7
+    },
+    {
+      "id": "c5",
+      "claim": "The effect also appears in older adult samples.",
+      "quote": "The same effect has been shown in older adult samples [19].",
+      "page": 8
+    }
+  ],
+  "cited_dois": [
+    "10.99999/ref-d.012",
+    "10.99999/ref-d.014",
+    "10.99999/ref-d.019"
+  ],
+  "code_data_urls": [
+    "code.example.invalid/sample-d"
+  ],
+  "statistic_strings": [
+    "t(28) = 3.12, p = .004",
+    "F(1, 56) = 6.35, p = .015"
+  ]
+}

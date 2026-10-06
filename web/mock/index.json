@@ -1,0 +1,24 @@
+{
+  "papers": [
+    {
+      "id": "sample-d",
+      "title": "Sample Paper: Interval Timing Under Divided Attention",
+      "doi": "10.99999/sample-d.2026.001"
+    },
+    {
+      "id": "sample-c",
+      "title": "Sample Paper: Working Memory Span and Reading Speed",
+      "doi": "10.99999/sample-c.2026.002"
+    },
+    {
+      "id": "sample-a",
+      "title": "Sample Paper: Sleep Timing and Morning Alertness",
+      "doi": "10.99999/sample-a.2026.003"
+    },
+    {
+      "id": "sample-w",
+      "title": "Sample Paper: Commuting Patterns and Sleep Reports",
+      "doi": "10.99999/sample-w.2026.004"
+    }
+  ]
+}

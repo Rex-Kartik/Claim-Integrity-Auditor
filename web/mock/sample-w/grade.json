@@ -1,0 +1,26 @@
+{
+  "paper_id": "sample-w",
+  "grade": "withheld",
+  "rule_fired": "more than half of claims not checkable",
+  "reason": "4 of 6 claims could not be checked, so no grade is given.",
+  "total_claims": 6,
+  "uncheckable_claims": [
+    {
+      "claim_id": "c1",
+      "reason": "The statistic has no degrees of freedom, so it could not be recomputed."
+    },
+    {
+      "claim_id": "c2",
+      "reason": "The effect appears only in a figure, so no statistic could be read."
+    },
+    {
+      "claim_id": "c3",
+      "reason": "The cited work has no retrievable abstract."
+    },
+    {
+      "claim_id": "c4",
+      "reason": "The cited work is behind a paywall."
+    }
+  ],
+  "expected_grade": "C"
+}

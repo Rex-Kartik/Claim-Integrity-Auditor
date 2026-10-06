@@ -1,0 +1,40 @@
+{
+  "results": [
+    {
+      "doi": "10.99999/sample-a.2026.003",
+      "status": "none found",
+      "source_field": "crossref.update-to; retraction_watch_csv",
+      "raw_record": {
+        "crossref_updates": [],
+        "retraction_watch_rows": 0
+      }
+    },
+    {
+      "doi": "10.99999/ref-a.031",
+      "status": "none found",
+      "source_field": "crossref.update-to; retraction_watch_csv",
+      "raw_record": {
+        "crossref_updates": [],
+        "retraction_watch_rows": 0
+      }
+    },
+    {
+      "doi": "10.99999/ref-a.032",
+      "status": "none found",
+      "source_field": "crossref.update-to; retraction_watch_csv",
+      "raw_record": {
+        "crossref_updates": [],
+        "retraction_watch_rows": 0
+      }
+    },
+    {
+      "doi": "10.99999/ref-a.033",
+      "status": "none found",
+      "source_field": "crossref.update-to; retraction_watch_csv",
+      "raw_record": {
+        "crossref_updates": [],
+        "retraction_watch_rows": 0
+      }
+    }
+  ]
+}

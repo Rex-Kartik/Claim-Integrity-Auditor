@@ -1,0 +1,31 @@
+{
+  "results": [
+    {
+      "doi": "10.99999/sample-c.2026.002",
+      "status": "none found",
+      "source_field": "crossref.update-to; retraction_watch_csv",
+      "raw_record": {
+        "crossref_updates": [],
+        "retraction_watch_rows": 0
+      }
+    },
+    {
+      "doi": "10.99999/ref-c.021",
+      "status": "none found",
+      "source_field": "crossref.update-to; retraction_watch_csv",
+      "raw_record": {
+        "crossref_updates": [],
+        "retraction_watch_rows": 0
+      }
+    },
+    {
+      "doi": "10.99999/ref-c.022",
+      "status": "none found",
+      "source_field": "crossref.update-to; retraction_watch_csv",
+      "raw_record": {
+        "crossref_updates": [],
+        "retraction_watch_rows": 0
+      }
+    }
+  ]
+}

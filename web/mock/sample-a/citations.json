@@ -1,0 +1,31 @@
+{
+  "results": [
+    {
+      "claim_id": "c3",
+      "cited_doi": "10.99999/ref-a.031",
+      "verdict": "supports",
+      "passage": "Invented abstract text: reports validation of an alertness scale in adult samples.",
+      "evidence_label": "abstract only",
+      "page": 3,
+      "quote": "The alertness scale has been validated in adults [31]."
+    },
+    {
+      "claim_id": "c4",
+      "cited_doi": "10.99999/ref-a.032",
+      "verdict": "supports",
+      "passage": "Invented abstract text: reports seasonal shifts in sleep timing for the region.",
+      "evidence_label": "abstract only",
+      "page": 6,
+      "quote": "Seasonal variation in sleep timing was reported earlier [32]."
+    },
+    {
+      "claim_id": "c5",
+      "cited_doi": "10.99999/ref-a.033",
+      "verdict": "supports",
+      "passage": "Invented abstract text: describes a recruitment approach for sleep surveys.",
+      "evidence_label": "abstract only",
+      "page": 3,
+      "quote": "Recruitment followed the approach used in earlier work [33]."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "results": [
+    {
+      "claim_id": "c4",
+      "cited_doi": "10.99999/ref-c.021",
+      "verdict": "supports",
+      "passage": "Invented abstract text: describes the span protocol used in this field.",
+      "evidence_label": "abstract only",
+      "page": 3,
+      "quote": "We used the established span protocol [21]."
+    },
+    {
+      "claim_id": "c5",
+      "cited_doi": "10.99999/ref-c.022",
+      "verdict": "supports",
+      "passage": "Invented abstract text: publishes reading speed norms for adult readers.",
+      "evidence_label": "abstract only",
+      "page": 7,
+      "quote": "Norms matched earlier published values [22]."
+    }
+  ]
+}
