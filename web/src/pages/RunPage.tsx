@@ -98,13 +98,13 @@ export function RunPage() {
         <div><Button type="submit" disabled={running}>Start audit</Button></div>
       </form>
 
-      {runId && (
+      {(runId || isSubmitting) && (
         <>
           <h2 className="mt-10 text-xl font-semibold">Stages</h2>
           <p className="sr-only" role="status" aria-live="polite">{announce}</p>
           <ol aria-label="Audit stages" className="mt-3 max-w-xl border-l-2 border-border pl-4">
             {STAGES.map((name) => {
-              const st = stages[name];
+              const st = isSubmitting && !runId ? "waiting" : stages[name];
               return (
                 <li key={name} className="flex items-center justify-between gap-3 py-2">
                   <span>{name}</span>

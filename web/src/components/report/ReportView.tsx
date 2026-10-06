@@ -17,7 +17,7 @@ export function ReportView({ bundle, indexHref }: { bundle: PaperBundle; indexHr
         <h1 className="text-2xl font-semibold sm:text-3xl">{summary.title}</h1>
         <p className="mt-1 flex flex-wrap items-center gap-2 text-sm text-muted">
           <span className="font-mono">{summary.doi}</span>
-          <Badge>Sample data</Badge>
+          {summary.id.startsWith("sample-") && <Badge>Sample data</Badge>}
         </p>
       </header>
 
@@ -27,7 +27,7 @@ export function ReportView({ bundle, indexHref }: { bundle: PaperBundle; indexHr
           <h2 id="grade-heading" className="text-xl font-semibold">{gradeLabel(grade.grade)}: {grade.rule_fired}</h2>
           <p className="mt-1">{grade.reason}</p>
           <p className="mt-2 text-sm text-muted">
-            Expected grade: {grade.expected_grade}. Claims: {grade.total_claims}, not checkable: {grade.uncheckable_claims.length}.
+            {grade.expected_grade ? `Expected grade: ${grade.expected_grade}. ` : ""}Claims: {grade.total_claims}, not checkable: {grade.uncheckable_claims.length}.
           </p>
         </div>
       </section>

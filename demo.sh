@@ -22,7 +22,7 @@ echo "Waiting for backend to be ready..."
 sleep 5
 
 echo "Starting automated demo run (3 papers)..."
-.venv/Scripts/python run_demo.py
+api/.venv/Scripts/python run_demo.py
 
 echo "Demo complete! Shutting down backend..."
 kill $BACKEND_PID

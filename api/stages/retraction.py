@@ -105,10 +105,17 @@ def _check_crossref(doi: str) -> dict:
         # Check if it is a retraction notice
         work_type = work.get("type", "")
         title = " ".join(work.get("title", []))
-        is_retraction = (
-            work_type in ("retraction", "notice")
-            or "retract" in title.lower()
-        )
+        is_retraction = False
+        # Check explicit update-to array
+        for update in work.get("update-to", []):
+            if update.get("type") == "retraction":
+                is_retraction = True
+                break
+        
+        # Check relations (is-retracted-by)
+        relations = work.get("relation", {})
+        if "is-retracted-by" in relations:
+            is_retraction = True
         if is_retraction:
             result = {
                 "verdict": "retraction record found",

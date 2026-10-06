@@ -99,7 +99,7 @@ function adaptGrade(raw: Record<string, unknown>, auditId: string): GradeFile {
       claim_id: String(u.claim ?? u.raw_string ?? i),
       reason:   String(u.reason ?? "not checkable"),
     })),
-    expected_grade:    grade,   // backend doesn't track expected; use actual
+    expected_grade:    null, // backend doesn't track expected
   };
 }
 

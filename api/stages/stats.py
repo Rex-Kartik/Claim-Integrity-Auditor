@@ -61,7 +61,9 @@ def _round_to_precision(value: float, ref_str: str) -> float:
     if "." in ref_str:
         decimals = len(ref_str.split(".")[-1])
     else:
-        decimals = 0
+        # If it doesn't have a dot but is being treated as a decimal (e.g. "05" from "p < .05")
+        # the number of decimals is just the length of the string.
+        decimals = len(ref_str)
     return round(value, decimals)
 
 

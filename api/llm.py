@@ -65,9 +65,9 @@ def has_keys() -> bool:
 
 def _list_models(api_key: str) -> list[str]:
     """Call the Gemini model-listing endpoint and return models supporting generateContent."""
-    url = f"{_GEMINI_BASE}/models?key={api_key}&pageSize=100"
+    url = f"{_GEMINI_BASE}/models?pageSize=100"
     try:
-        resp = httpx.get(url, timeout=15)
+        resp = httpx.get(url, headers={"x-goog-api-key": api_key}, timeout=15)
         resp.raise_for_status()
         data = resp.json()
         models = []
@@ -84,12 +84,12 @@ def _probe_model(model_name: str, api_key: str) -> bool:
     """Send a probe prompt; return True if response contains 'OK'."""
     # model_name may be "models/gemini-1.5-flash" — use as-is
     short = model_name.lstrip("models/")
-    url = f"{_GEMINI_BASE}/{model_name}:generateContent?key={api_key}"
+    url = f"{_GEMINI_BASE}/{model_name}:generateContent"
     payload = {
         "contents": [{"parts": [{"text": "Reply with exactly: OK"}]}]
     }
     try:
-        resp = httpx.post(url, json=payload, timeout=20)
+        resp = httpx.post(url, headers={"x-goog-api-key": api_key}, json=payload, timeout=20)
         if resp.status_code == 200:
             data = resp.json()
             text = data["candidates"][0]["content"]["parts"][0]["text"]
@@ -156,12 +156,12 @@ def call_llm(prompt: str, cached_result=None, require_json: bool = False) -> Opt
         return cached_result
 
     for idx, key in avail:
-        url = f"{_GEMINI_BASE}/{_active_model}:generateContent?key={key}"
+        url = f"{_GEMINI_BASE}/{_active_model}:generateContent"
         payload = {"contents": [{"parts": [{"text": prompt}]}]}
         if require_json:
             payload["generationConfig"] = {"responseMimeType": "application/json"}
         try:
-            resp = httpx.post(url, json=payload, timeout=60)
+            resp = httpx.post(url, headers={"x-goog-api-key": key}, json=payload, timeout=60)
             if resp.status_code == 429:
                 logger.warning("Rate limit on key %d; putting on cooldown.", idx + 1)
                 _cooldown_until[idx] = time.time() + COOLDOWN_SECONDS
@@ -173,8 +173,8 @@ def call_llm(prompt: str, cached_result=None, require_json: bool = False) -> Opt
                 probe_and_select_model()
                 if not _active_model:
                     return cached_result
-                url = f"{_GEMINI_BASE}/{_active_model}:generateContent?key={key}"
-                resp = httpx.post(url, json=payload, timeout=60)
+                url = f"{_GEMINI_BASE}/{_active_model}:generateContent"
+                resp = httpx.post(url, headers={"x-goog-api-key": key}, json=payload, timeout=60)
 
             resp.raise_for_status()
             data = resp.json()

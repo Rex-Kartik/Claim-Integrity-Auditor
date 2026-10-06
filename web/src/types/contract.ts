@@ -97,7 +97,7 @@ export interface GradeFile {
   reason: string; // one or two sentences of detail
   total_claims: number;
   uncheckable_claims: UncheckableClaim[];
-  expected_grade: Grade;
+  expected_grade: Grade | null;
 }
 
 /** mock/index.json (replace with a backend listing). */

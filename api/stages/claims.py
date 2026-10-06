@@ -56,11 +56,21 @@ def run(audit_id: str, raw_pages: list[dict]) -> dict:
 
     prompt = CLAIM_PROMPT.format(text=trimmed)
 
-    cache_key = trimmed[:200]  # cache by first 200 chars of text
+    import hashlib
+    cache_key = hashlib.sha256(trimmed.encode("utf-8")).hexdigest()
     cached = cache_get("claims", cache_key)
+    if cached is not None:
+        payload = {
+            "stage": "claims",
+            "inputs": {"page_count": len(raw_pages)},
+            "outputs": cached,
+            "rejected_claims": [], # Assuming they were already rejected before caching
+            "raw_response_length": 0,
+        }
+        write_stage_result(audit_id, "claims", payload)
+        return payload
 
-    raw_response = call_llm(prompt, cached_result=json.dumps(cached) if cached else None, require_json=True)
-
+    raw_response = call_llm(prompt, require_json=True)
     if raw_response is None:
         payload = {
             "stage": "claims",

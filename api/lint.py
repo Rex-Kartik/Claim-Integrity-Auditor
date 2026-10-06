@@ -81,7 +81,7 @@ def lint_all(runs_dir: Path) -> dict[str, list[str]]:
 if __name__ == "__main__":
     import sys
     # Handle direct file arguments like `python lint.py runs/*/report.html`
-    if len(sys.argv) > 1 and "*" in sys.argv[1] or sys.argv[1].endswith(".html"):
+    if len(sys.argv) > 1 and ("*" in sys.argv[1] or sys.argv[1].endswith(".html")):
         import glob
         failed = False
         for arg in sys.argv[1:]:

@@ -56,9 +56,11 @@ def _fetch_abstract_crossref(doi: str) -> Optional[str]:
                 abstract = re.sub(r"<[^>]+>", " ", abstract).strip()
                 cache_set("abstract_crossref", doi, abstract)
                 return abstract
+            else:
+                cache_set("abstract_crossref", doi, "")
+                return ""
     except Exception as e:
         logger.debug("Crossref abstract fetch failed for %s: %s", doi, e)
-    cache_set("abstract_crossref", doi, None)
     return None
 
 
