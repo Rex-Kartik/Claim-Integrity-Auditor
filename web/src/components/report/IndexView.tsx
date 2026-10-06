@@ -11,6 +11,7 @@ export interface IndexEntry {
 // Compares two grade strings from grade.json for display. It does not derive a grade.
 function matchText(g: GradeFile) {
   if (g.grade === "withheld") return "grade withheld";
+  if (!g.expected_grade) return "not recorded";
   return g.grade === g.expected_grade ? "matches expected" : "differs from expected";
 }
 
@@ -29,10 +30,10 @@ export function IndexView({ entries, hrefFor }: { entries: IndexEntry[]; hrefFor
               <tr key={summary.id}>
                 <Th scope="row" className="bg-surface font-normal">
                   <a href={hrefFor(summary.id)} className="font-medium text-primary underline">{summary.title}</a>
-                  <Badge className="ml-2">Sample data</Badge>
+                  {summary.id.startsWith("sample-") && <Badge className="ml-2">Sample data</Badge>}
                 </Th>
                 <Td><span className="font-mono text-xs">{summary.doi}</span></Td>
-                <Td>{gradeLabel(grade.expected_grade)}</Td>
+                <Td>{grade.expected_grade ? gradeLabel(grade.expected_grade) : "not recorded"}</Td>
                 <Td>
                   <span className="flex items-center gap-2">
                     <GradeSeal grade={grade.grade} className="h-8 w-8 text-lg" />
