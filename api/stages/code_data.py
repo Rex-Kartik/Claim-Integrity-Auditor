@@ -5,6 +5,7 @@ Returns "loads", "fails" (with status code), or "absent".
 Never clones or executes anything.
 """
 import logging
+from langfuse import observe, propagate_attributes
 from typing import Optional
 
 import httpx
@@ -67,6 +68,7 @@ def check_url(url: str) -> dict:
         return result
 
 
+@observe(name="code_data_run")
 def run(audit_id: str, code_data_urls: list[str]) -> dict:
     """Run link checks and write stage result."""
     from shared import write_stage_result

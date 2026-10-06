@@ -5,6 +5,7 @@ chi-square(df)=value, r(df)=value with reported p-values.
 Recomputes p with scipy and returns "reproduced", "not reproduced", or "not checkable".
 """
 import logging
+from langfuse import observe, propagate_attributes
 import math
 import re
 from typing import Optional
@@ -198,6 +199,7 @@ def parse_and_check(stat_string: str) -> dict:
     }
 
 
+@observe(name="stats_run")
 def run(audit_id: str, apa_statistics: list[str]) -> dict:
     """Run statistics recomputation and write stage result."""
     from shared import write_stage_result

@@ -5,6 +5,7 @@ Extracts text per page with page numbers.
 import io
 import json
 import logging
+from langfuse import observe, propagate_attributes
 from pathlib import Path
 from typing import Optional
 
@@ -39,6 +40,7 @@ def full_text(pages: list[dict]) -> str:
     return "\n".join(p["text"] for p in pages)
 
 
+@observe(name="extract_run")
 def run(audit_id: str, pdf_bytes: bytes) -> dict:
     """Extract text and write stage result."""
     from shared import write_stage_result

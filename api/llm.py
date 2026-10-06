@@ -5,6 +5,7 @@ Never logs or returns the key value — only position ("key 1", "key 2").
 """
 import json
 import logging
+from langfuse import observe, propagate_attributes
 import os
 import time
 from typing import Optional
@@ -137,6 +138,7 @@ def get_active_model() -> Optional[str]:
 # LLM call with rotation
 # ---------------------------------------------------------------------------
 
+@observe(as_type="generation", name="call_llm")
 def call_llm(prompt: str, cached_result=None, require_json: bool = False) -> Optional[str]:
     """
     Call the active Gemini model with key rotation on 429.

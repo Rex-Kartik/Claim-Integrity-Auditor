@@ -4,6 +4,7 @@ Evaluates D -> C -> B -> A in order.
 "grade withheld" if more than half of claims are uncheckable.
 """
 import logging
+from langfuse import observe, propagate_attributes
 from typing import Optional
 
 logger = logging.getLogger(__name__)
@@ -142,6 +143,7 @@ def _collect_uncheckable(citation_uncheckable: list, stats_uncheckable: list) ->
     return items
 
 
+@observe(name="grade_run")
 def run(audit_id: str, retraction_payload: dict, stats_payload: dict,
         citation_payload: dict, code_data_payload: dict, claims_payload: dict) -> dict:
     """Run the grader and write stage result."""

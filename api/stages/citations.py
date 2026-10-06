@@ -5,6 +5,7 @@ from Crossref or OpenAlex and asks Gemini whether it supports the claim.
 Returns "supports", "not supported", or "not checkable".
 """
 import logging
+from langfuse import observe, propagate_attributes
 import json
 import re
 from typing import Optional
@@ -170,6 +171,7 @@ def check_claim(claim: dict, cited_dois: list[str]) -> dict:
     }
 
 
+@observe(name="citations_run")
 def run(audit_id: str, claims: list[dict], cited_dois: list[str]) -> dict:
     """Run citation check on at most 3 claims and write stage result."""
     from shared import write_stage_result

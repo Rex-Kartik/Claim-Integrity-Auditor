@@ -4,6 +4,7 @@ Main FastAPI application for the Research Claim Integrity Auditor.
 import asyncio
 import json
 import logging
+from langfuse import observe, propagate_attributes
 import os
 import sys
 import uuid
@@ -63,8 +64,11 @@ def _push_event_sync(audit_id: str, event: dict):
         logger.debug("Event push error: %s", e)
 
 
+@observe(name="audit_pipeline")
 async def _run_audit_pipeline(audit_id: str, pdf_bytes: Optional[bytes], doi_or_link: Optional[str]):
     """Run the full audit pipeline, emitting SSE events."""
+    from langfuse import get_client
+    get_client().update_current_span(metadata={"audit_id": audit_id})
     audit = _audits[audit_id]
 
     async def emit(stage: str, status: str, data: dict = None):

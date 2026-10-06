@@ -7,6 +7,7 @@ A failed lookup is NEVER reported as "none found".
 """
 import csv
 import logging
+from langfuse import observe, propagate_attributes
 import os
 from pathlib import Path
 from typing import Optional
@@ -196,6 +197,7 @@ def check_doi(doi: str, rw_dois: set, csv_path: Optional[Path]) -> dict:
     }
 
 
+@observe(name="retraction_run")
 def run(audit_id: str, paper_doi: Optional[str], cited_dois: list[str]) -> dict:
     """Run retraction check on paper DOI and cited DOIs, write stage result."""
     from shared import write_stage_result

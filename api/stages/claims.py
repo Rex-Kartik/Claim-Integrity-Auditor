@@ -6,6 +6,7 @@ Rejects any claim whose quote is not found verbatim in the extracted text.
 """
 import json
 import logging
+from langfuse import observe, propagate_attributes
 import re
 from typing import Optional
 
@@ -44,6 +45,7 @@ def _build_text_with_pages(raw_pages: list[dict]) -> str:
     return "\n\n".join(parts)
 
 
+@observe(name="claims_run")
 def run(audit_id: str, raw_pages: list[dict]) -> dict:
     """Run claim extraction and write stage result."""
     from shared import write_stage_result, cache_get, cache_set
