@@ -1,0 +1,26 @@
+{
+  "results": [
+    {
+      "claim_id": "c1",
+      "test": "t",
+      "df": "48",
+      "reported_p": ".041",
+      "recomputed_p": 0.041,
+      "formula": "two-tailed p = 2 * (1 - CDF_t(|t|, df))",
+      "verdict": "reproduced",
+      "page": 4,
+      "quote": "Later sleep timing predicted lower alertness, t(48) = 2.10, p = .041."
+    },
+    {
+      "claim_id": "c2",
+      "test": "t",
+      "df": "22",
+      "reported_p": "< .05",
+      "recomputed_p": 0.0313,
+      "formula": "two-tailed p = 2 * (1 - CDF_t(|t|, df)); inequality check against .05",
+      "verdict": "reproduced",
+      "page": 5,
+      "quote": "Alertness recovered after fixed wake times, t(22) = 2.30, p < .05."
+    }
+  ]
+}

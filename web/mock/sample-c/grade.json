@@ -1,0 +1,9 @@
+{
+  "paper_id": "sample-c",
+  "grade": "C",
+  "rule_fired": "at least one statistic not reproduced",
+  "reason": "Claim c1 reports p = .01, while the recomputed two-tailed p is 0.0196. No retraction record was found, and no claim failed both the source check and the statistic check.",
+  "total_claims": 6,
+  "uncheckable_claims": [],
+  "expected_grade": "C"
+}

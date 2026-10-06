@@ -1,0 +1,39 @@
+{
+  "results": [
+    {
+      "doi": "10.99999/sample-w.2026.004",
+      "status": "none found",
+      "source_field": "crossref.update-to; retraction_watch_csv",
+      "raw_record": {
+        "crossref_updates": [],
+        "retraction_watch_rows": 0
+      }
+    },
+    {
+      "doi": "10.99999/ref-w.041",
+      "status": "none found",
+      "source_field": "crossref.update-to; retraction_watch_csv",
+      "raw_record": {
+        "crossref_updates": [],
+        "retraction_watch_rows": 0
+      }
+    },
+    {
+      "doi": "10.99999/ref-w.042",
+      "status": "not checkable",
+      "source_field": null,
+      "raw_record": {
+        "error": "Lookup returned HTTP status 503 twice"
+      }
+    },
+    {
+      "doi": "10.99999/ref-w.043",
+      "status": "none found",
+      "source_field": "crossref.update-to; retraction_watch_csv",
+      "raw_record": {
+        "crossref_updates": [],
+        "retraction_watch_rows": 0
+      }
+    }
+  ]
+}

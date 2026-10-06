@@ -1,0 +1,9 @@
+{
+  "results": [
+    {
+      "url": "code.example.invalid/sample-a",
+      "status": "fails",
+      "http_status": 404
+    }
+  ]
+}

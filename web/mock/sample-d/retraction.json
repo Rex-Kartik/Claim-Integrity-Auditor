@@ -1,0 +1,44 @@
+{
+  "results": [
+    {
+      "doi": "10.99999/sample-d.2026.001",
+      "status": "retraction record found",
+      "source_field": "retraction_watch_csv.RetractionNature",
+      "raw_record": {
+        "RecordID": "SAMPLE-0001",
+        "Title": "Sample Paper: Interval Timing Under Divided Attention",
+        "OriginalPaperDOI": "10.99999/sample-d.2026.001",
+        "RetractionDate": "2026-03-02",
+        "RetractionNature": "Retraction",
+        "Reason": "Invented sample entry for interface testing",
+        "Source": "Sample record in the Retraction Watch CSV format"
+      }
+    },
+    {
+      "doi": "10.99999/ref-d.012",
+      "status": "none found",
+      "source_field": "crossref.update-to; retraction_watch_csv",
+      "raw_record": {
+        "crossref_updates": [],
+        "retraction_watch_rows": 0
+      }
+    },
+    {
+      "doi": "10.99999/ref-d.014",
+      "status": "none found",
+      "source_field": "crossref.update-to; retraction_watch_csv",
+      "raw_record": {
+        "crossref_updates": [],
+        "retraction_watch_rows": 0
+      }
+    },
+    {
+      "doi": "10.99999/ref-d.019",
+      "status": "not checkable",
+      "source_field": null,
+      "raw_record": {
+        "error": "Lookup timed out after 2 retries"
+      }
+    }
+  ]
+}

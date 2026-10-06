@@ -1,0 +1,31 @@
+{
+  "results": [
+    {
+      "claim_id": "c3",
+      "cited_doi": "10.99999/ref-d.012",
+      "verdict": "supports",
+      "passage": "Invented abstract text: reports that attention-gating alters perceived duration under concurrent load.",
+      "evidence_label": "abstract only",
+      "page": 7,
+      "quote": "This pattern is consistent with attention-gating accounts of timing [12]."
+    },
+    {
+      "claim_id": "c4",
+      "cited_doi": "10.99999/ref-d.014",
+      "verdict": "not supported",
+      "passage": "Invented abstract text: reports no change in timing accuracy under concurrent load.",
+      "evidence_label": "abstract only",
+      "page": 7,
+      "quote": "A slowdown of similar size was reported previously [14]."
+    },
+    {
+      "claim_id": "c5",
+      "cited_doi": "10.99999/ref-d.019",
+      "verdict": "not checkable",
+      "passage": "No abstract could be retrieved for this cited work.",
+      "evidence_label": "abstract only",
+      "page": 8,
+      "quote": "The same effect has been shown in older adult samples [19]."
+    }
+  ]
+}

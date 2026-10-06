@@ -1,0 +1,26 @@
+{
+  "results": [
+    {
+      "claim_id": "c1",
+      "test": "t",
+      "df": "28",
+      "reported_p": ".004",
+      "recomputed_p": 0.0042,
+      "formula": "two-tailed p = 2 * (1 - CDF_t(|t|, df))",
+      "verdict": "reproduced",
+      "page": 5,
+      "quote": "Variability of estimates increased under dual-task load, t(28) = 3.12, p = .004."
+    },
+    {
+      "claim_id": "c2",
+      "test": "F",
+      "df": "1, 56",
+      "reported_p": ".015",
+      "recomputed_p": 0.0146,
+      "formula": "p = 1 - CDF_F(F, df1, df2)",
+      "verdict": "reproduced",
+      "page": 6,
+      "quote": "The load by block interaction was reliable, F(1, 56) = 6.35, p = .015."
+    }
+  ]
+}

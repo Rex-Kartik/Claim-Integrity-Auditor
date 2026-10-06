@@ -1,0 +1,48 @@
+{
+  "results": [
+    {
+      "claim_id": "c1",
+      "test": "t",
+      "df": "34",
+      "reported_p": ".01",
+      "recomputed_p": 0.0196,
+      "formula": "two-tailed p = 2 * (1 - CDF_t(|t|, df))",
+      "verdict": "not reproduced",
+      "page": 5,
+      "quote": "Reading speed rose with span, t(34) = 2.45, p = .01."
+    },
+    {
+      "claim_id": "c2",
+      "test": "F",
+      "df": "1, 38",
+      "reported_p": ".047",
+      "recomputed_p": 0.0474,
+      "formula": "p = 1 - CDF_F(F, df1, df2)",
+      "verdict": "reproduced",
+      "page": 6,
+      "quote": "Span moderated text difficulty effects, F(1, 38) = 4.20, p = .047."
+    },
+    {
+      "claim_id": "c3",
+      "test": "chi-square",
+      "df": "2",
+      "reported_p": ".02",
+      "recomputed_p": 0.0201,
+      "formula": "p = 1 - CDF_chi2(x, df)",
+      "verdict": "reproduced",
+      "page": 6,
+      "quote": "Strategy choice differed by group, chi-square(2) = 7.81, p = .02."
+    },
+    {
+      "claim_id": "c6",
+      "test": "r",
+      "df": "48",
+      "reported_p": ".013",
+      "recomputed_p": 0.0127,
+      "formula": "t = r * sqrt(df / (1 - r^2)); two-tailed p = 2 * (1 - CDF_t(|t|, df))",
+      "verdict": "reproduced",
+      "page": 8,
+      "quote": "Span and speed were correlated, r(48) = .35, p = .013."
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "paper_id": "sample-c",
+  "paper_doi": "10.99999/sample-c.2026.002",
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Reading speed increased with working memory span.",
+      "quote": "Reading speed rose with span, t(34) = 2.45, p = .01.",
+      "page": 5
+    },
+    {
+      "id": "c2",
+      "claim": "Span moderated the effect of text difficulty.",
+      "quote": "Span moderated text difficulty effects, F(1, 38) = 4.20, p = .047.",
+      "page": 6
+    },
+    {
+      "id": "c3",
+      "claim": "Strategy choice was associated with group membership.",
+      "quote": "Strategy choice differed by group, chi-square(2) = 7.81, p = .02.",
+      "page": 6
+    },
+    {
+      "id": "c4",
+      "claim": "The span task follows an established protocol.",
+      "quote": "We used the established span protocol [21].",
+      "page": 3
+    },
+    {
+      "id": "c5",
+      "claim": "Reading speed norms match earlier published norms.",
+      "quote": "Norms matched earlier published values [22].",
+      "page": 7
+    },
+    {
+      "id": "c6",
+      "claim": "Span and reading speed were positively correlated.",
+      "quote": "Span and speed were correlated, r(48) = .35, p = .013.",
+      "page": 8
+    }
+  ],
+  "cited_dois": [
+    "10.99999/ref-c.021",
+    "10.99999/ref-c.022"
+  ],
+  "code_data_urls": [
+    "code.example.invalid/sample-c"
+  ],
+  "statistic_strings": [
+    "t(34) = 2.45, p = .01",
+    "F(1, 38) = 4.20, p = .047",
+    "chi-square(2) = 7.81, p = .02",
+    "r(48) = .35, p = .013"
+  ]
+}

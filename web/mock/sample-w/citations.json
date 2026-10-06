@@ -1,0 +1,31 @@
+{
+  "results": [
+    {
+      "claim_id": "c3",
+      "cited_doi": "10.99999/ref-w.041",
+      "verdict": "not checkable",
+      "passage": "No abstract could be retrieved for this cited work.",
+      "evidence_label": "abstract only",
+      "page": 3,
+      "quote": "Sleep reports in this population are reliable [41]."
+    },
+    {
+      "claim_id": "c4",
+      "cited_doi": "10.99999/ref-w.042",
+      "verdict": "not checkable",
+      "passage": "The cited work is behind a paywall; no abstract was available.",
+      "evidence_label": "abstract only",
+      "page": 3,
+      "quote": "The commute measure was used in earlier surveys [42]."
+    },
+    {
+      "claim_id": "c6",
+      "cited_doi": "10.99999/ref-w.043",
+      "verdict": "supports",
+      "passage": "Invented abstract text: describes a survey instrument for sleep and commuting.",
+      "evidence_label": "abstract only",
+      "page": 3,
+      "quote": "The survey instrument has been described elsewhere [43]."
+    }
+  ]
+}

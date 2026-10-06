@@ -1,0 +1,9 @@
+{
+  "paper_id": "sample-a",
+  "grade": "B",
+  "rule_fired": "code/data link fails",
+  "reason": "No retraction record was found, and the source and statistic checks passed on all checkable claims. The code link returned HTTP status 404.",
+  "total_claims": 5,
+  "uncheckable_claims": [],
+  "expected_grade": "A"
+}

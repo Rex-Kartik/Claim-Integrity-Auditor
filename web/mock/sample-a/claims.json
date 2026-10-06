@@ -1,0 +1,48 @@
+{
+  "paper_id": "sample-a",
+  "paper_doi": "10.99999/sample-a.2026.003",
+  "claims": [
+    {
+      "id": "c1",
+      "claim": "Later sleep timing was linked to lower morning alertness.",
+      "quote": "Later sleep timing predicted lower alertness, t(48) = 2.10, p = .041.",
+      "page": 4
+    },
+    {
+      "id": "c2",
+      "claim": "Alertness recovered after a fixed wake time.",
+      "quote": "Alertness recovered after fixed wake times, t(22) = 2.30, p < .05.",
+      "page": 5
+    },
+    {
+      "id": "c3",
+      "claim": "The alertness scale has been validated in adults.",
+      "quote": "The alertness scale has been validated in adults [31].",
+      "page": 3
+    },
+    {
+      "id": "c4",
+      "claim": "Sleep timing varies with season in this region.",
+      "quote": "Seasonal variation in sleep timing was reported earlier [32].",
+      "page": 6
+    },
+    {
+      "id": "c5",
+      "claim": "The recruitment approach follows earlier work.",
+      "quote": "Recruitment followed the approach used in earlier work [33].",
+      "page": 3
+    }
+  ],
+  "cited_dois": [
+    "10.99999/ref-a.031",
+    "10.99999/ref-a.032",
+    "10.99999/ref-a.033"
+  ],
+  "code_data_urls": [
+    "code.example.invalid/sample-a"
+  ],
+  "statistic_strings": [
+    "t(48) = 2.10, p = .041",
+    "t(22) = 2.30, p < .05"
+  ]
+}
